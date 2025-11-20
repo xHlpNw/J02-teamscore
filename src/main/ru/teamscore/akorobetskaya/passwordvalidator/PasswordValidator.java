@@ -21,12 +21,36 @@ public class PasswordValidator {
         if (!hasDigits(password)) {
             return false;
         }
+        if (!hasLowercase(password)) {
+            return false;
+        }
+        if (!hasUppercase(password)) {
+            return false;
+        }
         return true;
     }
 
     private static boolean hasDigits(String text) {
         for (char symbol : text.toCharArray()) {
             if (Character.isDigit(symbol)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasLowercase(String text) {
+        for (char symbol : text.toCharArray()) {
+            if (Character.isLowerCase(symbol)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasUppercase(String text) {
+        for (char symbol : text.toCharArray()) {
+            if (Character.isUpperCase(symbol)) {
                 return true;
             }
         }

@@ -39,4 +39,20 @@ class PasswordValidatorTest {
     public void noDigitsPassword(String password) {
         testPassword(password, "TestUser", false);
     }
+
+    @ParameterizedTest
+    @DisplayName("Password has no lower case letters")
+    @ValueSource(strings =
+            {"QWERTYU2", "01234ABCD", "P@$$W0RD"})
+    public void noLowerCasePassword(String password) {
+        testPassword(password, "TestUser", false);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Password has no upper case letters")
+    @ValueSource(strings =
+            {"qwerty1234", ")(*&56nm", "password5"})
+    public void noUpperCasePassword(String password) {
+        testPassword(password, "TestUser", false);
+    }
 }
