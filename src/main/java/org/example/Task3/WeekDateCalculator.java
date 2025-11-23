@@ -10,8 +10,9 @@ public class WeekDateCalculator {
      * @return LocalDate of first Monday in the year
      */
     public static LocalDate getFirstMonday(int year) {
-        LocalDate jan4 = LocalDate.of(year, 1, 4);
-        return jan4.with(DayOfWeek.MONDAY);
+        // 7 января всегда в той же неделе, что и первый понедельник января
+        LocalDate jan7 = LocalDate.of(year, 1, 7);
+        return jan7.with(DayOfWeek.MONDAY);
     }
 
     /**
@@ -34,9 +35,9 @@ public class WeekDateCalculator {
     }
 
     public static LocalDate getLastMonday(int year) {
-        // 28 декабря всегда в последней ISO-неделе
-        LocalDate dec28 = LocalDate.of(year, 12, 28);
-        return dec28.with(DayOfWeek.MONDAY);
+        // 31 декабря всегда в последней неделе
+        LocalDate dec31 = LocalDate.of(year, 12, 31);
+        return dec31.with(DayOfWeek.MONDAY);
     }
 
     /**
