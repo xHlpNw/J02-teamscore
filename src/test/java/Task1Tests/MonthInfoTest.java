@@ -1,4 +1,6 @@
-import org.example.MonthInfo;
+package Task1Tests;
+
+import org.example.Task1.MonthInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
