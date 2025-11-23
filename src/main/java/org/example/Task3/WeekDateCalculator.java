@@ -44,7 +44,7 @@ public class WeekDateCalculator {
      * @param year
      * @return 52 or 53
      */
-    private static int getMaxIsoWeeks(int year) {
+    public static int getMaxIsoWeeks(int year) {
         LocalDate firstMonday = getFirstMonday(year);
         LocalDate lastMonday = getLastMonday(year);
         return (int) ChronoUnit.WEEKS.between(firstMonday, lastMonday) + 1;
