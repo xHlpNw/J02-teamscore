@@ -1,4 +1,4 @@
-package ru.teamscore.akorobetskaya.passwordvalidator;
+package Task4Tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

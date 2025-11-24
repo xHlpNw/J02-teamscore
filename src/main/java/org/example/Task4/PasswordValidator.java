@@ -1,4 +1,4 @@
-package ru.teamscore.akorobetskaya.passwordvalidator;
+package org.example.Task4;
 
 /** Проверка пароля на сложность.
  * Пароль должен отвечать следующим требованиям:
