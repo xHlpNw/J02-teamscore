@@ -47,8 +47,8 @@ public class PasswordValidator {
 
     private static boolean hasSpacesOrQuotes(String text) {
         for (char symbol : text.toCharArray()) {
-            if (Character.isSpaceChar(symbol)
-                    || symbol == '\t' || symbol == '"') {
+            if (Character.isWhitespace(symbol)
+                    || symbol == '\'' || symbol == '"') {
                 return true;
             }
         }
@@ -64,35 +64,30 @@ public class PasswordValidator {
     public static ValidationResult validatePassword(String password, String userName) {
         ValidationResult result = new ValidationResult();
         if (password.length() < 8) {
-            result.setValid(false);
             result.addErrorDescription(
                     "The password must not be shorter than 8 characters.");
         }
         if (!hasDigits(password)) {
-            result.setValid(false);
             result.addErrorDescription(
                     "The password must contain at least one digit.");
         }
         if (!hasLowercase(password)) {
-            result.setValid(false);
             result.addErrorDescription(
-                    "The password must contain both upper and lower case characters.");
+                    "The password must contain at least one lowercase letter.");
         }
         if (!hasUppercase(password)) {
-            result.setValid(false);
             result.addErrorDescription(
-                    "The password must contain both upper and lower case characters.");
+                    "The password must contain at least one uppercase letter.");
         }
         if (password.equals(userName)) {
-            result.setValid(false);
             result.addErrorDescription(
                     "The password must not match the username.");
         }
         if (hasSpacesOrQuotes(password)) {
-            result.setValid(false);
             result.addErrorDescription(
                     "The password must not contain spaces, tabs, or quotation marks.");
         }
+        result.setValid(result.getErrorDescriptions().isEmpty());
         return result;
     }
 }
