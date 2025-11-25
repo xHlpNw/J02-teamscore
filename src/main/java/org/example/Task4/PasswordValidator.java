@@ -15,25 +15,7 @@ public class PasswordValidator {
      * @return возвращает true, если пароль отвечает всем требованиям
      */
     public static boolean isValidPassword(String password, String userName) {
-        if (password.length() < 8) {
-            return false;
-        }
-        if (!hasDigits(password)) {
-            return false;
-        }
-        if (!hasLowercase(password)) {
-            return false;
-        }
-        if (!hasUppercase(password)) {
-            return false;
-        }
-        if (password == userName) {
-            return false;
-        }
-        if (hasSpacesOrQuotes(password)) {
-            return false;
-        }
-        return true;
+        return validatePassword(password, userName).isValid();
     }
 
     private static boolean hasDigits(String text) {
@@ -79,7 +61,7 @@ public class PasswordValidator {
      * @param userName
      * @return ValidationResult with a boolean compliance value and a list of error descriptions.
      */
-    public ValidationResult validatePassword(String password, String userName) {
+    public static ValidationResult validatePassword(String password, String userName) {
         ValidationResult result = new ValidationResult();
         if (password.length() < 8) {
             result.setValid(false);
