@@ -72,4 +72,45 @@ public class PasswordValidator {
         }
         return false;
     }
+
+    /**
+     * Checks the password for compliance with the requirements
+     * @param password
+     * @param userName
+     * @return ValidationResult with a boolean compliance value and a list of error descriptions.
+     */
+    public ValidationResult validatePassword(String password, String userName) {
+        ValidationResult result = new ValidationResult();
+        if (password.length() < 8) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must not be shorter than 8 characters.");
+        }
+        if (!hasDigits(password)) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must contain at least one digit.");
+        }
+        if (!hasLowercase(password)) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must contain both upper and lower case characters.");
+        }
+        if (!hasUppercase(password)) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must contain both upper and lower case characters.");
+        }
+        if (password.equals(userName)) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must not match the username.");
+        }
+        if (hasSpacesOrQuotes(password)) {
+            result.setValid(false);
+            result.addErrorDescription(
+                    "The password must not contain spaces, tabs, or quotation marks.");
+        }
+        return result;
+    }
 }
